@@ -11,6 +11,13 @@ router.get('/trns', (req, res, next)=>{
 		res.json(result);
 	});
 });
+router.get('/users', (req, res, next)=>{
+	model.getUsers((err, result)=>{
+		if(err)
+			return res.status(500).end();
+		res.json(result);
+	});
+});
 router.get('/user', (req, res, next)=>{
 	model.findUser(req,(err, result)=>{
 		if(err)
@@ -38,11 +45,18 @@ router.put('/updatetrn', (req, res, next)=>{
 		res.json(result);
 	});
 });
+router.put('/trnuser', (req, res, next)=>{
+	model.insertTrnUser(req.body.trns, (err, result)=>{
+		if(err)
+			return res.status(500).end();
+		res.json(result);
+	});
+});
 module.exports = router;
 
 // router.put('/createUsers', (req, res, next)=>{
 	// 	model.createUsers((err, result)=>{
-		// 		console.log("zdec");
+
 		// 		if(err)
 		// 			return res.status(500).end();
 		// 		res.json(result);
