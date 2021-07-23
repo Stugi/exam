@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/floating-labels.css">
+</head>
+
+<body>
+  <form class="form-signin" action="/" method="post" class="">
+    <h1 class="h3 mb-3 font-weight-normal">Введите логин и пароль</h1>
+    <!-- секция которая отобразится, если message будет равен true -->
+    {{#message}}
+      <p>Invalid login/password pair</p>
+    {{/message}}
+    <div class="form-label-group">
+      <!-- <label for="inputLogin">Login</label> -->
+      <input type="text" name="login" id="inputLogin" class="form-control" placeholder="Login" required>
+    </div>
+    <div class="form-label-group">
+      <!-- <label for="inputPass">Password</label> -->
+      <input type="password" name="pass" id="inputPass" class="form-control" placeholder="Password" required>
+    </div>
+    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign in" />
+  </form>
+</body>
+
+</html>
