@@ -2,7 +2,7 @@
 <div class="flex-row">
   <div id="nav">
     <router-link to="/">All</router-link>
-    <router-link to="/createtrn">New</router-link>
+    <router-link to="/mytrn">New</router-link>
   </div>
   <router-view />
 </div>

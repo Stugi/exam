@@ -35,6 +35,7 @@ require('./authentication/init.js')();
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 // app.use('/admin', routesApi);
 app.use("/", routesAdmin);
 app.use("/api", routesApi);

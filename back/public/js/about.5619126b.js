@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["about"],{"67bf":function(a,t,e){"use strict";e.r(t);var n=e("7a23"),c=Object(n["G"])("data-v-a0009f3a"),d=c((function(a,t,e,c,d,o){return Object(n["p"])(),Object(n["d"])("h3",null,"Новое тестирование")})),o={};o.render=d,o.__scopeId="data-v-a0009f3a";t["default"]=o}}]);
-//# sourceMappingURL=about.5619126b.js.map

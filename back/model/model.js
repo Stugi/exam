@@ -23,6 +23,42 @@ exports.getTrns = function(cb) {
     cb(null, results);
   });
 }
+exports.getMyTrns = function(user,cb) {
+  let collection = db.collection("trnuser");
+  const filter = {"user.login":user.login};
+  collection.find(filter).toArray((err, results) => {
+    if (err) cb(err);
+    cb(null, results);
+  });
+}
+exports.startMyTrn = function(id,cb) {
+  let collection = db.collection("trnuser");
+  const filter = {_id: ObjectID(id)};
+  collection.find(filter).toArray((err, results) => {
+    if (err) cb(err);
+    cb(null, results[0]);
+  });
+}
+
+exports.updateTrnUser = function(id,set, cb) {
+
+  let collection = db.collection("trnuser");
+  let ObjectID = require('mongodb').ObjectID;
+
+  collection.updateOne({
+    _id: ObjectID(id)
+  }, {
+    $set:
+      set
+
+  }, (err, results) => {
+    if (err) {
+      cb(err)
+    };
+    cb(null, results);
+  });
+}
+
 exports.getUsers = function(cb) {
   let collection = db.collection("user");
   const filter = {};
@@ -92,7 +128,6 @@ exports.insertTrnUser = function(dataclient, cb) {
 
   let collection = db.collection("trnuser");
   let ObjectID = require('mongodb').ObjectID;
-  console.log(dataclient);
   collection.insertMany(
     dataclient, (err, results) => {
       if (err) {

@@ -11,6 +11,43 @@ router.get('/trns', (req, res, next)=>{
 		res.json(result);
 	});
 });
+
+router.get('/mytrns', (req, res, next)=>{
+	model.getMyTrns(req.user,(err, result)=>{
+		if(err)
+			return res.status(500).end();
+		res.json(result);
+	});
+});
+
+
+router.put('/mytrn', (req, res, next)=>{
+	if(typeof req.body.idtrn != "string" || !req.body.idtrn) return res.status(400).end();
+
+	model.startMyTrn(req.body.idtrn, (err, result)=>{
+		if(err)
+			return res.status(500).end();
+
+			let set = {"state.state":1,"state.name":"В процессе"}
+			model.updateTrnUser(req.body.idtrn,set, (err, result)=>{
+				if(err)
+					return res.status(500).end();
+			});
+
+
+			res.json(result);
+		});
+
+	});
+router.put('/mytrnres', (req, res, next)=>{
+	let set = {"state.state":2,"state.name":"Завершен", "result":req.body.result}
+	model.updateTrnUser(req.body.idtrn,set, (err, result)=>{
+		if(err)
+			return res.status(500).end();
+		res.json(result);
+	});
+	});
+
 router.get('/users', (req, res, next)=>{
 	model.getUsers((err, result)=>{
 		if(err)

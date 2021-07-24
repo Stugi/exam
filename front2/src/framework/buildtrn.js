@@ -3,7 +3,9 @@ function createTrn(trn, user) {
   let questions = [];
   while (trn.needQ != questions.length) {
     let item = Math.floor(Math.random() * cloneQuestions.length);
-    questions.push(cloneQuestions.splice(item, 1));
+    let q = cloneQuestions.splice(item, 1);
+    q.nomerQ = questions.length+1;
+    questions.push(q[0]);
   }
   let newtrn = {
     name: trn.name,
